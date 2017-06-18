@@ -1,4 +1,5 @@
 class Club < ApplicationRecord
+  include Dateadded
 
   has_many :tees
 
@@ -15,10 +16,6 @@ class Club < ApplicationRecord
     else
       all.order('name ASC')
     end
-  end
-
-  def date_added
-    self.created_at.strftime("%B %d, %Y")
   end
 
   def downcase_then_titleize

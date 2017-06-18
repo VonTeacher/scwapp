@@ -1,4 +1,5 @@
 FactoryGirl.define do
+
   factory :club do
     name 'Augusta Country Club'
     city 'Augusta'
@@ -16,6 +17,11 @@ FactoryGirl.define do
     back_9_slope 129
     bogey_rating 98.3
     gender 'M'
+  end
+
+  factory :user do
+    username 'testuser'
+    email 'testuser@mailinator.com'
   end
 
 end

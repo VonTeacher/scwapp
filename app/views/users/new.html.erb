@@ -1,2 +1,19 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<%= link_to 'Back to Homepage', root_url %>
+
+<h2>New User Signup</h2>
+
+<%= render partial: 'shared/error_messages', locals: { user: @user } %>
+
+<%= form_for @user do |f| %>
+  <p>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+  </p>
+  <p>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </p>
+  <p>
+    <%= f.submit 'Register' %>
+  </p>
+<% end %>
