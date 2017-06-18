@@ -1,20 +1,28 @@
 <h1>Clubs</h1>
 
-<%= form_tag clubs_path, method: :get, enforce_utf8: false do %>
-  <%= text_field_tag :search, params[:search] %>
-  <%= submit_tag 'Search Courses', name: nil %>
-<% end %>
+<div>
+  <%= link_to 'Add a Club', new_club_path %>
+</div>
 
-<% @clubs.each do |club| %>
-  <div class="club-listing">
-    <p>
-      <%= link_to club.name, club_path(club) %>, <%= club.city %>, <%= club.state %>
-    </p>
-    <p>
-      Tees added: <%= club.tees.count %> for ClubAppID#<%= club.id %>
-    </p>
-    <p>
-      Added: <%= club.date_added %>
-    </p>
-  </div>
-<% end %>
+<div>
+  <%= form_tag clubs_path, method: :get, enforce_utf8: false do %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag 'Search Courses', name: nil %>
+  <% end %>
+</div>
+
+<div id="all-clubs">
+  <% @clubs.each do |club| %>
+    <div class="club-details">
+      <p>
+        <%= link_to club.name, club_path(club) %>, <%= club.city %>, <%= club.state %>
+      </p>
+      <p>
+        Tees added: <%= club.tees.count %> for ClubAppID#<%= club.id %>
+      </p>
+      <p>
+        Added: <%= club.date_added %>
+      </p>
+    </div>
+  <% end %>
+</div>
