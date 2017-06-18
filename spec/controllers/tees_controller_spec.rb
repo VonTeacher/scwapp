@@ -4,27 +4,30 @@ RSpec.describe TeesController, type: :controller do
 
   describe 'tees#new action' do
     it 'should successfully show the new tee page' do
-      get :new
+      club = FactoryGirl.create(:club)
+      get :new, params: { club_id: club.id }
       expect(response).to have_http_status(:success)
     end
   end
 
   describe 'tees#create action' do
     it 'should successfully create a new tee' do
-      post :create, params: { tee: { color: 'Blue', usga_course_rating_18: 70.5, slope_rating_18: 122, front_9_rating: 35.0, front_9_slope: 119, back_9_rating: 35.5, back_9_slope: 124, bogey_rating: 93.1, gender: 'M', club_id: 1 } }
-      expect(response).to redirect_to tees_url
+      club = FactoryGirl.create(:club)
+      tee = FactoryGirl.create(:tee)
+      post :create, params: { tee: tee.attributes, club_id: club.id }
+      expect(response).to redirect_to club_url(club)
 
       tee = Tee.last
-      expect(tee.color).to eq('Blue')
-      expect(tee.usga_course_rating_18).to eq(70.5)
-      expect(tee.slope_rating_18).to eq(122)
-      expect(tee.front_9_rating).to eq(35.0)
-      expect(tee.front_9_slope).to eq(119)
-      expect(tee.back_9_rating).to eq(35.5)
-      expect(tee.back_9_slope).to eq(124)
-      expect(tee.bogey_rating).to be_within(0.1).of(93.1)
+      expect(tee.color).to eq('I-O Champ')
+      expect(tee.usga_course_rating_18).to be_within(0.1).of(73.6)
+      expect(tee.slope_rating_18).to eq(133)
+      expect(tee.front_9_rating).to be_within(0.1).of(37.8)
+      expect(tee.front_9_slope).to eq(137)
+      expect(tee.back_9_rating).to be_within(0.1).of(35.9)
+      expect(tee.back_9_slope).to eq(129)
+      expect(tee.bogey_rating).to be_within(0.1).of(98.3)
       expect(tee.gender).to eq('M')
-      expect(tee.club_id).to eq(1)
+      expect(tee.club_id).to eq(club.id)
     end
   end
 

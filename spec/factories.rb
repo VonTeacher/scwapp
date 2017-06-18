@@ -6,6 +6,7 @@ FactoryGirl.define do
   end
 
   factory :tee do
+    club
     color 'I-O Champ'
     usga_course_rating_18 73.6
     slope_rating_18 133
@@ -15,7 +16,6 @@ FactoryGirl.define do
     back_9_slope 129
     bogey_rating 98.3
     gender 'M'
-    club_id #what goes here
   end
 
 end
