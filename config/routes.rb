@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
   root 'clubs#index'
 
-  resources :clubs
-  resources :tees
+  resources :clubs do
+    resources :tees, only: [:new, :create]
+  end
 
 end

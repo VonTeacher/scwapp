@@ -40,6 +40,8 @@ group :development, :test do
   gem 'byebug', platform: :mri
   # rspec-rails
   gem 'rspec-rails', '~> 3.5'
+  # factory girl
+  gem 'factory_girl_rails', '~> 4.0'
 end
 
 group :development do

@@ -1,6 +1,6 @@
 <h1>Add a New Tee</h1>
 
-<%= form_for @tee do |f| %>
+<%= form_for @tee, url: club_tees_path(@club) do |f| %>
   <p>
     <%= f.label :color %>
     <%= f.text_field :color %>
@@ -36,5 +36,8 @@
   <p>
     <%= f.label :gender %>
     <%= f.text_field :gender, value: 'M' %>
+  </p>
+  <p>
+    <%= f.submit "Add Tee to #{@club.name}" %>
   </p>
 <% end %>

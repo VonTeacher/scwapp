@@ -1,13 +1,15 @@
 class TeesController < ApplicationController
 
   def new
+    @club = Club.find(params[:club_id])
     @tee = Tee.new
   end
 
   def create
-    @tee = Tee.create(tee_params)
+    @club = Club.find(params[:club_id])
+    @tee = @club.tees.create(tee_params)
     if @tee.valid?
-      redirect_to tees_url
+      redirect_to club_path(@club)
     else
       render :new, status: :unprocessable_entity
     end

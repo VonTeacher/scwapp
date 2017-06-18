@@ -1,0 +1,17 @@
+<p>
+  <%= link_to 'Back to Homepage', root_url %>
+</p>
+<h2><%= @club.name %> (<%= @club.tees.count %>)</h2>
+<p>
+  <%= @club.city %>, <%= @club.state %>
+</p>
+<div>
+  <% if @club.tees.blank? %>
+    No tees have been added to this club.
+  <% else %>
+    <%= render template: 'clubs/list_club_tees', locals: { club: @club } %>
+  <% end %>
+</div>
+<p>
+  <%= link_to 'Add a Tee', new_club_tee_path(@club) %>
+</p>

@@ -1,7 +1,7 @@
 class ClubsController < ApplicationController
 
   def index
-    @club = Club.last_five
+    @clubs = Club.search(params[:search])
   end
 
   def new
@@ -14,6 +14,13 @@ class ClubsController < ApplicationController
       redirect_to root_url
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def show
+    @club = Club.find_by_id(params[:id])
+    if @club.blank?
+      render plain: 'Club Not Found', status: :not_found
     end
   end
 
