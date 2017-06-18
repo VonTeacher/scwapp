@@ -6,4 +6,7 @@ Rails.application.routes.draw do
     resources :tees, only: [:new, :create]
   end
 
+  # USERS
+  get '/signup', to: 'users#new'
+
 end
