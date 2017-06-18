@@ -1,0 +1,40 @@
+<h1>Add a New Tee</h1>
+
+<%= form_for @tee do |f| %>
+  <p>
+    <%= f.label :color %>
+    <%= f.text_field :color %>
+  </p>
+  <p>
+    <%= f.label :usga_course_rating_18 %>
+    <%= f.number_field :usga_course_rating_18, step: 0.1 %>
+  </p>
+  <p>
+    <%= f.label :slope_rating_18 %>
+    <%= f.number_field :slope_rating_18 %>
+  </p>
+  <p>
+    <%= f.label :front_9_rating %>
+    <%= f.number_field :front_9_rating, step: 0.1 %>
+  </p>
+  <p>
+    <%= f.label :front_9_slope %>
+    <%= f.number_field :front_9_slope %>
+  </p>
+  <p>
+    <%= f.label :back_9_rating %>
+    <%= f.number_field :back_9_rating, step: 0.1 %>
+  </p>
+  <p>
+    <%= f.label :back_9_slope %>
+    <%= f.number_field :back_9_slope %>
+  </p>
+  <p>
+    <%= f.label :bogey_rating %>
+    <%= f.number_field :bogey_rating, step: 0.1 %>
+  </p>
+  <p>
+    <%= f.label :gender %>
+    <%= f.text_field :gender, value: 'M' %>
+  </p>
+<% end %>

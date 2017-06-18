@@ -1,9 +1,9 @@
 class Club < ApplicationRecord
 
+  has_many :tees
+
   validates :name, presence: true
-
   validates :city, presence: true
-
   validates :state, presence: true, length: { is: 2 }
 
 

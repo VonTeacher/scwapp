@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170618004917) do
+ActiveRecord::Schema.define(version: 20170618021819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,22 @@ ActiveRecord::Schema.define(version: 20170618004917) do
     t.string   "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "tees", force: :cascade do |t|
+    t.string   "color"
+    t.decimal  "usga_course_rating_18"
+    t.integer  "slope_rating_18"
+    t.decimal  "front_9_rating"
+    t.integer  "front_9_slope"
+    t.decimal  "back_9_rating"
+    t.integer  "back_9_slope"
+    t.decimal  "bogey_rating",          precision: 4, scale: 1
+    t.string   "gender"
+    t.integer  "club_id"
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
+    t.index ["club_id"], name: "index_tees_on_club_id", using: :btree
   end
 
 end
