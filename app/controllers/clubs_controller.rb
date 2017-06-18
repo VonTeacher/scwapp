@@ -1,6 +1,7 @@
 class ClubsController < ApplicationController
 
   def index
+    @club = Club.last_five
   end
 
   def new
