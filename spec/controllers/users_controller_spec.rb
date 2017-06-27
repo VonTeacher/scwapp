@@ -18,13 +18,12 @@ RSpec.describe UsersController, type: :controller do
 
   describe 'users#create' do
     it 'should successfully create a new user' do
-      user = FactoryGirl.create(:user)
-      post :create, params: { user: user.attributes }
-      expect(response).to redirect_to user
-
+      post :create, params: { user: { username: 'test_user', email: 'test_user@test.com', password: 'testpass', password_confirmation: 'testpass' } }
       user = User.last
-      expect(user.username).to eq 'testuser'
-      expect(user.email).to eq 'testuser@mailinator.com'
+
+      expect(response).to redirect_to user
+      expect(user.username).to eq 'test_user'
+      expect(user.email).to eq 'test_user@test.com'
     end
 
     it 'should not accept a new user without a username' do

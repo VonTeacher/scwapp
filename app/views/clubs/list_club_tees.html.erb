@@ -1,5 +1,26 @@
-<ul style="border: 1px solid black">
+<table>
+  <tr>
+    <th>Tee Name</th>
+    <th>Rating</th>
+    <th>Slope</th>
+    <th>F9 Rating</th>
+    <th>F9 Slope</th>
+    <th>B9 Rating</th>
+    <th>B9 Slope</th>
+    <th>Bogey Rating</th>
+    <th>Gender</th>
+  </tr>
   <% club.tees.each do |tee| %>
-    <li style="border: 1px solid red"><%= tee.color %></li>
+  <tr>
+    <td><%= tee.color %></td>
+    <td><%= tee.usga_course_rating_18 %></td>
+    <td><%= tee.slope_rating_18 %></td>
+    <td><%= tee.front_9_rating %></td>
+    <td><%= tee.front_9_slope %></td>
+    <td><%= tee.back_9_rating %></td>
+    <td><%= tee.back_9_slope %></td>
+    <td><%= tee.bogey_rating %></td>
+    <td><%= tee.gender %></td>
+  </tr>
   <% end %>
-</ul>
+</table>

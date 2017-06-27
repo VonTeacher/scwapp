@@ -50,6 +50,16 @@ RSpec.describe User, type: :model do
       expect(mixed_case_email.downcase).to eq(@user.email)
     end
 
+    it 'should require a non-blank password' do
+      @user.password = @user.password_confirmation = ' ' * 6
+      expect(@user).not_to be_valid
+    end
+
+    it 'should require a minimum length on password' do
+      @user.password = @user.password_confirmation = 'tests'
+      expect(@user).not_to be_valid
+    end
+
   end
 
 end
