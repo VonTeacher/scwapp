@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'support/test_helper'
 
 RSpec.describe "UsersSignups", type: :request do
 
@@ -23,6 +24,7 @@ RSpec.describe "UsersSignups", type: :request do
       }.to change(User, :count).by 1
       follow_redirect!
       assert_select 'div.alert-success'
+      assert test_is_logged_in?
     end
   end
 
