@@ -20,8 +20,8 @@ FactoryGirl.define do
   end
 
   factory :user do
-    username 'testuser'
-    email 'testuser@mailinator.com'
+    username 'factory_test_user'
+    email 'factory_test_user@mailinator.com'
     password 'testpass'
     password_confirmation 'testpass'
   end

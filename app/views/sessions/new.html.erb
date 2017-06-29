@@ -4,11 +4,17 @@
 <%= form_for(:session, url: login_path) do |f| %>
   <p>
     <%= f.label :username %>
-    <%= f.text_field :username %>
+    <%= f.text_field :username, autofocus: true %>
   </p>
   <p>
     <%= f.label :password %>
     <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label :remember_me do %>
+      <%= f.check_box :remember_me %>
+      <span>Remember me on this device</span>
+    <% end %>
   </p>
   <p>
     <%= f.submit 'Log In' %>

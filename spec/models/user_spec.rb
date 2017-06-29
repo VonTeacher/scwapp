@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
-  describe 'user model validations' do
+  before(:each) do
+    @user = FactoryGirl.create(:user)
+  end
 
-    before(:each) do
-      @user = FactoryGirl.create(:user)
-    end
+  describe 'user model validations' do
 
     it 'should be valid with username and email' do
       expect(@user).to be_valid
@@ -60,6 +60,10 @@ RSpec.describe User, type: :model do
       expect(@user).not_to be_valid
     end
 
+  end
+
+  it 'authenticated? should return false for a user with a nil digest' do
+    expect(@user.authenticated?('')).to eq false
   end
 
 end

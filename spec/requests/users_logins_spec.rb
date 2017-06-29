@@ -35,8 +35,29 @@ RSpec.describe "UsersLogins", type: :request do
       delete logout_path
       expect(test_is_logged_in?).to eq false
       expect(response).to redirect_to root_url
+      # Simulate a user clicking logout in a second window
+      delete logout_path
       follow_redirect!
       assert_select "a[href=?]", login_path
+    end
+  end
+
+  describe 'remember me' do
+
+    before(:each) do
+      @user = FactoryGirl.create(:user)
+    end
+
+    it 'should login with remembering' do
+      log_in_as_test(@user, remember_me: '1')
+      expect(session[:user_id]).to eq @user.id
+      expect(cookies['remember_token'].empty?).to eq false
+    end
+
+    it 'should login without remembering' do
+      log_in_as_test(@user, remember_me: '1')
+      log_in_as_test(@user, remember_me: '0')
+      expect(cookies['remember_token'].empty?).to eq true
     end
   end
 
