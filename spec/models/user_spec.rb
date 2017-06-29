@@ -35,6 +35,13 @@ RSpec.describe User, type: :model do
       end
     end
 
+    it 'should require unique usernames' do
+      duplicate_user = @user.dup
+      duplicate_user.username = @user.username.upcase
+      @user.save
+      expect(duplicate_user).not_to be_valid
+    end
+
     it 'should require unique email addresses' do
       duplicate_user = @user.dup
       duplicate_user.email = @user.email.upcase
