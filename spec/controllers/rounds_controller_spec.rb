@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'support/test_helper'
 
 RSpec.describe RoundsController, type: :controller do
 
@@ -16,10 +17,11 @@ RSpec.describe RoundsController, type: :controller do
 
     it 'should create a round and return to the user\'s profile' do
       user = FactoryGirl.create(:user)
+      log_in_as user
       tee  = FactoryGirl.create(:tee)
       club = FactoryGirl.create(:club)
       post :create, params: { round: { club_id: club.id, tee_id: tee.id, user_id: user.id, adjusted_score: 100, date_played: "2017-06-25" } }
-      expect(response).to redirect_to @user
+      expect(response).to redirect_to user
     end
 
   end

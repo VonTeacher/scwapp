@@ -4,7 +4,7 @@
 
 New round for <%= @user.username %>
 
-<%= form_for @round, url: user_add_round_path do |f| %>
+<%= form_for @round, url: add_round_path do |f| %>
   <p>
     <%= f.collection_select :club_id, Club.order(:name), :id, :name, include_blank: true %>
   </p>

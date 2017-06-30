@@ -1,7 +1,7 @@
 class RoundsController < ApplicationController
 
   def new
-    @user = User.find_by(id: params[:user_id])
+    @user = current_user
     @round = Round.new
   end
 

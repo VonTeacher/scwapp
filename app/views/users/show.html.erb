@@ -10,7 +10,7 @@
   </p>
   <% if @user == current_user %>
     <p>
-      <%= link_to user_add_round_path(@user) do %>
+      <%= link_to add_round_path(@user) do %>
         <button>Add a New Round</button>
       <% end %>
     </p>
