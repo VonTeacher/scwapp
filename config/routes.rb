@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'rounds/new'
+
   root 'clubs#index'
 
   resources :clubs do
@@ -7,10 +9,13 @@ Rails.application.routes.draw do
   end
 
   # USERS
-  get '/users', to: 'users#index'
+  get  '/users', to: 'users#index'
   get  '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    get  '/add_round', to: 'rounds#new'
+    post '/add_round', to: 'rounds#create'
+  end
 
   # SESSIONS
   get    '/login',  to: 'sessions#new'

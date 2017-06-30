@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170629181837) do
+ActiveRecord::Schema.define(version: 20170629215600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,19 @@ ActiveRecord::Schema.define(version: 20170629181837) do
     t.string   "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "rounds", force: :cascade do |t|
+    t.integer  "adjusted_score"
+    t.date     "date_played"
+    t.integer  "user_id"
+    t.integer  "tee_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "club_id"
+    t.index ["club_id"], name: "index_rounds_on_club_id", using: :btree
+    t.index ["tee_id"], name: "index_rounds_on_tee_id", using: :btree
+    t.index ["user_id"], name: "index_rounds_on_user_id", using: :btree
   end
 
   create_table "tees", force: :cascade do |t|
@@ -50,4 +63,6 @@ ActiveRecord::Schema.define(version: 20170629181837) do
     t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
   end
 
+  add_foreign_key "rounds", "tees"
+  add_foreign_key "rounds", "users"
 end

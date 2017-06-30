@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+
+  has_many :rounds
+  has_many :tees, through: :rounds
+
   attr_accessor :remember_token
   include Dateadded
 

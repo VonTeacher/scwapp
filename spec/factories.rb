@@ -26,4 +26,12 @@ FactoryGirl.define do
     password_confirmation 'testpass'
   end
 
+  factory :round do
+    club
+    tee
+    user
+    adjusted_score 100
+    date_played Date.today
+  end
+
 end

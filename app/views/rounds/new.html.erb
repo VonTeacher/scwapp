@@ -1,0 +1,25 @@
+<% provide(:title, 'New Round') %>
+
+<h2>Add a New Round</h2>
+
+New round for <%= @user.username %>
+
+<%= form_for @round, url: user_add_round_path do |f| %>
+  <p>
+    <%= f.collection_select :club_id, Club.order(:name), :id, :name, include_blank: true %>
+  </p>
+  <p>
+    <%= f.grouped_collection_select :tee_id, Club.order(:name), :tees, :name, :id, :color, include_blank: true %>
+  </p>
+  <p>
+    <%= f.label :date_played %>
+    <%= f.date_field :date_played %>
+  </p>
+  <p>
+    <%= f.label :adjusted_score, 'Adjusted Gross Score' %>
+    <%= f.number_field :adjusted_score %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

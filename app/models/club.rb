@@ -2,6 +2,7 @@ class Club < ApplicationRecord
   include Dateadded
 
   has_many :tees
+  has_many :rounds, through: :tees
 
   validates :name, presence: true, allow_blank: false
   validates :city, presence: true, allow_blank: false

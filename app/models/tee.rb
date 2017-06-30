@@ -1,5 +1,8 @@
 class Tee < ApplicationRecord
 
+  has_many :rounds
+  has_many :users, through: :rounds
+
   belongs_to :club
 
   validates :color, presence: true
