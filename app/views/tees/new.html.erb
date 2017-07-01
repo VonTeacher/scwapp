@@ -1,4 +1,6 @@
-<h1>Add a New Tee</h1>
+<% provide(:title, 'New Tee') %>
+
+<h2>Add a New Tee</h2>
 
 <%= form_for @tee, url: club_tees_path(@club) do |f| %>
   <p>

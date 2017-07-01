@@ -1,28 +1,22 @@
 <% provide(:title, @user.username) %>
 
-<%= link_to 'Back to Homepage', root_url %>
+  <div class="user-profile-details">
+    <%= user_greeting(@user) %>
+  </div>
 
-<h2>Hi, <%= @user.username %>!</h2>
+  <div class="user-profile-handicap-container">
+    <%= user_profile_handicap_index(@user) %>
+  </div>
 
-<div class="user-details">
-  <p>
+  <div class="user-profile-last-container">
+    <%= user_profile_last_round(@user) %>
+  </div>
+
+  <div class="user-profile-all-container">
+    <%= user_profile_latest_n_rounds(@user) %>
+  </div>
+
+  <div class="user-profile-joined clear">
     Joined: <%= @user.date_added %>
-  </p>
-  <% if @user == current_user %>
-    <p>
-      <%= link_to add_round_path(@user) do %>
-        <button>Add a New Round</button>
-      <% end %>
-    </p>
-  <% end %>
-  <p>
-    Rounds Played:
-  </p>
-  <p>
-    <ul>
-      <% @user.rounds.each do |r| %>
-        <li><%= r.adjusted_score %> on <%= r.tee.color %> at <%= r.tee.club.name %> (<%= r.date_played.strftime('%b %d, %Y') %>)</li>
-      <% end %>
-    </ul>
-  </p>
+  </div>
 </div>

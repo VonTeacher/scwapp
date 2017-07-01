@@ -55,4 +55,8 @@ class User < ApplicationRecord
     update_attribute :remember_digest, nil
   end
 
+  def last_played
+    !self.rounds.empty? ? self.rounds.order('date_played DESC').first : nil
+  end
+
 end

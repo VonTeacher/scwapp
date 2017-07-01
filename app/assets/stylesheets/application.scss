@@ -14,6 +14,7 @@
  *= require_self
  */
 
+$lightgreen-50: #99CC98;
 $green: #1A4D19;
 
 @mixin box_sizing {
@@ -102,6 +103,97 @@ body {
     background-color: pink;
     border: 1px solid red;
   }
+}
+
+/* USER PROFILE PAGE */
+.user-profile-section-header {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.user-profile-details {
+
+}
+
+.user-profile-handicap-container {
+
+}
+
+.user-profile-last-container {
+
+}
+
+.user-last-inline {
+  display: inline-block;
+}
+
+.user-last-score-wrapper {
+  
+}
+
+.user-last-right-buffer {
+  margin-right: 25px;
+}
+
+.user-last-ags {
+  font-weight: bold;
+  font-size: 31px;
+}
+
+.user-last-diff {
+  text-align: center;
+}
+
+.user-profile-all-container {
+  margin-bottom: 15px;
+}
+
+.user-profile-all-container ul {
+  padding: 0;
+  margin: 0;
+  margin-left: 10px;
+  list-style-type: none;
+}
+
+.user-profile-all-container ul li {
+  line-height: 20px;
+  width: 500px;
+  a, a:active, a:hover, a:visited {
+    color: black;
+  }
+}
+
+.user-all-score {
+  font-weight: bold;
+  display: inline-block;
+  text-align: right;
+  width: 30px;
+}
+
+.user-all-tee {
+  width: 100px;
+}
+
+.user-profile-joined {
+  float: right;
+}
+
+.clear {
+  clear: both;
+}
+
+/* ALERTS */
+.alert-notice {
+  text-align: center;
+  margin-top: -1px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid $green;
+  border-radius: 0 0 10px 10px;
+  padding: 10px;
+  background-color: $lightgreen-50;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
 /* DEBUG */
