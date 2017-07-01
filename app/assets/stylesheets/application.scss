@@ -128,7 +128,7 @@ body {
 }
 
 .user-last-score-wrapper {
-  
+
 }
 
 .user-last-right-buffer {
@@ -136,6 +136,7 @@ body {
 }
 
 .user-last-ags {
+  text-align: center;
   font-weight: bold;
   font-size: 31px;
 }
@@ -172,10 +173,6 @@ body {
 
 .user-all-tee {
   width: 100px;
-}
-
-.user-profile-joined {
-  float: right;
 }
 
 .clear {
