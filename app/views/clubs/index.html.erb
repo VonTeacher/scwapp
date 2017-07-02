@@ -23,7 +23,7 @@
         Tees added: <%= club.tees.count %> for ClubAppID#<%= club.id %>
       </p>
       <p>
-        Added: <%= club.date_added %>
+        Added: <%= club.created_at.strftime('%b %d, %Y') %>
       </p>
     </div>
   <% end %>

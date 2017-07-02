@@ -1,19 +1,19 @@
 <% provide(:title, @user.username) %>
 
-  <div class="user-profile-details">
-    <%= user_greeting(@user) %>
-  </div>
+<div class="user-profile-details">
+  <%= user_greeting(@user) %>
+</div>
 
-  <div class="user-profile-handicap-container">
-    <%= user_profile_handicap_index(@user) %>
-  </div>
+<div class="user-profile-handicap-container">
+  <%= user_profile_handicap_index(@user) %>
+</div>
 
-  <div class="user-profile-last-container">
-    <%= user_profile_last_round(@user) %>
-  </div>
+<div class="user-profile-last-container">
+  <%= user_profile_last_round(@user) %>
+</div>
 
-  <div class="user-profile-all-container">
-    <%= user_profile_latest_n_rounds(@user) %>
-  </div>
+<div class="user-profile-all-container">
+  <%= user_profile_latest_n_rounds(@user) %>
+</div>
 
 </div>

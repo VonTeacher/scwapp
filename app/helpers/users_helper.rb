@@ -4,8 +4,7 @@ module UsersHelper
     if user.rounds.count < 5
       content_tag(:p, "#{5 - user.rounds.count} more rounds needed to obtain an index.")
     else
-      content_tag(:h3, )
-      # index calc
+      content_tag(:h3, "Handicap Index: #{user.handicap_index}")
     end
   end
 

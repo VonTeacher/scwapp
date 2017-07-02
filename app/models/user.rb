@@ -4,7 +4,6 @@ class User < ApplicationRecord
   has_many :tees, through: :rounds
 
   attr_accessor :remember_token
-  include Dateadded
 
   before_save { self.email = email.downcase }
 
@@ -57,6 +56,36 @@ class User < ApplicationRecord
 
   def last_played
     !self.rounds.empty? ? self.rounds.order('date_played DESC').first : nil
+  end
+
+  def handicap_index
+    differentials = {
+      5  => 1,
+      6  => 1,
+      7  => 2,
+      8  => 2,
+      9  => 3,
+      10 => 3,
+      11 => 4,
+      12 => 4,
+      13 => 5,
+      14 => 5,
+      15 => 6,
+      16 => 6,
+      17 => 7,
+      18 => 8,
+      19 => 9,
+      20 => 10
+    }
+
+    best = self.rounds.collect { |r| r.round_handicap_differential }.sort.first(differentials[self.rounds.count])
+
+    best.each_with_index do |b, i|
+      best[i] = b.round(1)
+    end
+
+    ((( best.sum / differentials[self.rounds.count] ) * 0.96 ) * 10.0).floor / 10.0
+
   end
 
 end

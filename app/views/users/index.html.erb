@@ -15,7 +15,7 @@
       <%= link_to user.username, user_path(user) %>
     </p>
     <p>
-      Joined: <%= user.date_added %>
+      Joined: <%= user.created_at.strftime('%b %d, %Y') %>
     </p>
   <% end %>
 </div>

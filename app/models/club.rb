@@ -1,5 +1,4 @@
 class Club < ApplicationRecord
-  include Dateadded
 
   has_many :tees
   has_many :rounds, through: :tees
