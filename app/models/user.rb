@@ -78,13 +78,13 @@ class User < ApplicationRecord
       20 => 10
     }
 
-    best = self.rounds.collect { |r| r.round_handicap_differential }.sort.first(differentials[self.rounds.count])
+    recent_eligible_rounds = self.rounds.order('date_played').last(20).collect { |r| r.round_handicap_differential }.sort.first(differentials[self.rounds.count])
 
-    best.each_with_index do |b, i|
-      best[i] = b.round(1)
+    recent_eligible_rounds.each_with_index do |b, i|
+      recent_eligible_rounds[i] = b.round(1)
     end
 
-    ((( best.sum / differentials[self.rounds.count] ) * 0.96 ) * 10.0).floor / 10.0
+    ((( recent_eligible_rounds.sum / differentials[self.rounds.count] ) * 0.96 ) * 10.0).floor / 10.0
 
   end
 
