@@ -105,6 +105,55 @@ body {
   }
 }
 
+/* ALL USERS PAGE */
+#all-users {
+
+}
+
+#all-users-table {
+  border: 1px solid black;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.all-users-header {
+  background-color: $green;
+  color: white;
+  padding: 5px;
+}
+
+.all-users-data {
+  font-weight: bold;
+}
+
+.user-username {
+  padding-left: 5px;
+  padding-right: 20px;
+}
+
+.user-hci {
+  text-align: right;
+  width: 50px;
+  padding-right: 5px;
+}
+
+.user-hci abbr {
+  text-align: center;
+  padding-right: 5px;
+  text-decoration: none;
+}
+
+.user-best {
+  text-align: right;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.user-played {
+  text-align: right;
+  padding-right: 5px;
+}
+
 /* USER PROFILE PAGE */
 .user-profile-section-header {
   font-size: 1rem;

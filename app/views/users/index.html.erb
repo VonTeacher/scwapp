@@ -9,7 +9,7 @@
   <% end %>
 </div>
 
-<div id="all-users">
+<div>
   <% @users.each do |user| %>
     <p>
       <%= link_to user.username, user_path(user) %>
@@ -18,4 +18,33 @@
       Joined: <%= user.created_at.strftime('%b %d, %Y') %>
     </p>
   <% end %>
+</div>
+
+<div id="all-users">
+  <table id="all-users-table">
+    <tr>
+      <th class="all-users-header">Username</th>
+      <th class="all-users-header">HCI</th>
+      <th class="all-users-header">Best Round</th>
+      <th class="all-users-header">Rounds<br />Played</th>
+    </tr>
+
+    <% @users.each do |user| %>
+      <tr>
+        <td class="all-users-data user-username"><%= link_to user.username, user %></td>
+        <td class="all-users-data user-hci">
+          <% if user.handicap_index == '***' %>
+            <%= content_tag(:abbr, '***', title: 'User has not entered enough rounds' ) %>
+          <% else %>
+            <%= user.handicap_index %>
+          <% end %>
+        </td>
+        <td class="all-users-data user-best"><%= user.best_round.adjusted_score %> on
+            <%= user.best_round.tee.color %> at
+            <%= user.best_round.club.name %></td>
+        <td class="all-users-data user-played"><%= user.rounds.count %></td>
+      </tr>
+    <% end %>
+
+  </table>
 </div>
