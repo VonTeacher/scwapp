@@ -10,9 +10,9 @@ module UsersHelper
 
   def user_greeting user
     if user == current_user
-      content_tag(:h2, "Hi&#44; #{user.username}!".html_safe) +
-      content_tag(:p) do
-       link_to 'Add a New Round', add_round_path(user)
+      content_tag(:h2, "Hi&#44; #{user.username}!".html_safe, class: 'user-greeting') +
+      content_tag(:span, class: 'user-add-round-button') do
+        link_to 'Add a New Round', add_round_path(user)
       end
     else
       content_tag(:h2, "Profile for #{user.username}")
