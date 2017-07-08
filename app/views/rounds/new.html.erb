@@ -15,8 +15,8 @@ New round for <%= @user.username %>
     <%= f.label :date_played %>
     <%= f.date_field :date_played %>
   </p>
-  <p class="score-reminder">
-    REMINDER: 
+  <p id="score_reminder">
+    REMINDER: The score you are submitting is your <span>Adjusted Gross Score</span>.<br />Please be sure to adjust maximum strokes before submitting.
   </p>
   <p>
     <%= f.label :adjusted_score, 'Adjusted Gross Score' %>

@@ -127,6 +127,14 @@ body {
   }
 }
 
+#score_reminder {
+  color: red;
+  font-size: 18px;
+  span {
+    font-weight: bold;
+  }
+}
+
 /* ALL USERS PAGE */
 tr {
   line-height: 2rem;
@@ -209,6 +217,20 @@ tr {
 
 }
 
+.user-profile-h3 {
+  display: inline-block;
+}
+
+.user-profile-hci {
+  display: inline-block;
+  color: white;
+  background-color: $green;
+  font-size: 24px;
+  margin-left: 5px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
 .user-profile-last-container {
 
 }
@@ -229,6 +251,7 @@ tr {
   text-align: center;
   font-weight: bold;
   font-size: 31px;
+  transform: translateY(-40%);
 }
 
 .user-last-diff {

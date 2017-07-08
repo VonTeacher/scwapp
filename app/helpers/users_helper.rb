@@ -4,7 +4,8 @@ module UsersHelper
     if user.rounds.count < 5
       content_tag(:p, "#{5 - user.rounds.count} more rounds needed to obtain an index.")
     else
-      content_tag(:h3, "Handicap Index: #{user.handicap_index}")
+      content_tag(:h3, "Handicap Index: ", class: 'user-profile-h3') +
+      content_tag(:span, "#{user.handicap_index}", class: 'user-profile-hci')
     end
   end
 
@@ -25,8 +26,7 @@ module UsersHelper
     else
       content_tag(:h3, 'Last Round Played:', class: 'user-profile-section-header') +
       content_tag(:div, class: 'user-last-score-wrapper') do
-        content_tag(:div, "<div class='user-last-ags'>#{user.last_played.adjusted_score}</div>
-                           <div class='user-last-diff'>(#{user.last_played.round_handicap_differential.round(1)})</div>".html_safe, class: 'user-last-inline user-last-right-buffer') +
+        content_tag(:div, "<div class='user-last-ags'>#{user.last_played.adjusted_score}</div>".html_safe, class: 'user-last-inline user-last-right-buffer') +
         content_tag(:div, "<div class='user-last-tee'>#{user.last_played.tee.color}</div>
                            <div class='user-last-club'>#{user.last_played.club.name}</div>
                            <div class='user-last-date'>#{user.last_played.date_played.strftime('%b %d, %Y')}</div>".html_safe, class: 'user-last-inline')
