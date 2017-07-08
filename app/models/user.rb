@@ -59,7 +59,11 @@ class User < ApplicationRecord
   end
 
   def best_round
-    self.rounds.order('adjusted_score').first
+    if self.rounds?
+      self.rounds.order('adjusted_score').first
+    else
+      return 'No rounds played yet'
+    end
   end
 
   def handicap_index
