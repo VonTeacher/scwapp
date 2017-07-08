@@ -14,7 +14,7 @@
     <tr>
       <th class="all-users-table-header">Username</th>
       <th class="all-users-table-header">HCI</th>
-      <th class="all-users-table-header">Best Round</th>
+      <!-- <th class="all-users-table-header">Best Round</th> -->
       <th class="all-users-table-header">Rounds<br />Played</th>
     </tr>
 
@@ -28,13 +28,6 @@
             <%= user.handicap_index %>
           <% end %>
         </td>
-        <% if !user.rounds.nil? %>
-          <td class="all-users-data user-best"><%= user.best_round.adjusted_score %> on
-              <%= user.best_round.tee.color %> at
-              <%= user.best_round.club.name %></td>
-        <% else %>
-          <td class="all-users-data user-best">No rounds played yet.</td>
-        <% end %>
         <td class="all-users-data user-played"><%= user.rounds.count %></td>
       </tr>
     <% end %>
