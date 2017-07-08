@@ -59,7 +59,7 @@ class User < ApplicationRecord
   end
 
   def best_round
-    if self.rounds.nil?
+    if !self.rounds.nil?
       self.rounds.order('adjusted_score').first
     else
       return 'No rounds played yet'
