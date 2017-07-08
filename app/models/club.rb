@@ -24,4 +24,8 @@ class Club < ApplicationRecord
     self.state = self.state.upcase
   end
 
+  def to_param
+    [id, name.parameterize].join('-')
+  end
+
 end

@@ -1,30 +1,35 @@
 <% provide(:title, 'Clubs') %>
 
-<h2>Clubs</h2>
-
-<div>
-  <%= link_to 'Add a Club', new_club_path %>
-</div>
-
-<div>
-  <%= form_tag clubs_path, method: :get, enforce_utf8: false do %>
+<div id="all-clubs-header-container">
+  <h2 id="all-clubs-header">Clubs</h2>
+  <div id="all-clubs-search">
+    <%= form_tag clubs_path, method: :get, enforce_utf8: false do %>
     <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag 'Search Courses', name: nil %>
-  <% end %>
+    <%= submit_tag 'Search Golf Clubs', name: nil %>
+    <% end %>
+  </div>
 </div>
+
+<span class="club-add-round-button">
+  <%= link_to 'Add a Course / Club', new_club_path %>
+</span>
 
 <div id="all-clubs">
-  <% @clubs.each do |club| %>
-    <div class="club-details">
-      <p>
-        <%= link_to club.name, club_path(club) %>, <%= club.city %>, <%= club.state %>
-      </p>
-      <p>
-        Tees added: <%= club.tees.count %> for ClubAppID#<%= club.id %>
-      </p>
-      <p>
-        Added: <%= club.created_at.strftime('%b %d, %Y') %>
-      </p>
-    </div>
-  <% end %>
+  <table id="all-clubs-table">
+    <tr>
+      <th class="all-clubs-table-header">Club Name</th>
+      <th class="all-clubs-table-header">City, State</th>
+      <th class="all-clubs-table-header">Tees</th>
+    </tr>
+
+    <% @clubs.each do |club| %>
+      <tr>
+        <td class="all-clubs-data club-clubname"><%= link_to club.name, club %></td>
+        <td class="all-clubs-data club-location"><%= club.city %>, <%= club.state.upcase %></td>
+        <td class="all-clubs-data club-number-of-tees"><%= join_tees_with_commas(club) %>
+        </td>
+      </tr>
+    <% end %>
+
+  </table>
 </div>

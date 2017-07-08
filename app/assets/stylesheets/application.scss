@@ -110,14 +110,12 @@ body {
 }
 
 .user-greeting {
-  display: inline-block;
+  margin-bottom: 25px;
 }
 
-.user-add-round-button {
-  float: right;
-  display: inline-block;
-  margin-top: 14px;
-  border-radius: 10px;
+.user-add-round-button,
+.club-add-round-button {
+  border-radius: 5px;
   padding: 10px;
   background-color: $green;
   font-weight: bold;
@@ -135,7 +133,7 @@ body {
   }
 }
 
-/* ALL USERS PAGE */
+/* ALL USERS / CLUBS PAGE */
 tr {
   line-height: 2rem;
   transition: all 0.0s;
@@ -148,11 +146,13 @@ tr {
   }
 }
 
-#all-users-header-container {
+#all-users-header-container,
+#all-clubs-header-container {
 
 }
 
-#all-users-header, #all-users-search {
+#all-users-header, #all-users-search,
+#all-clubs-header, #all-clubs-search {
   display: inline-block;
 }
 
@@ -160,22 +160,30 @@ tr {
 
 }
 
-#all-users-table {
+#all-clubs {
+  margin-top: 20px;
+}
+
+#all-users-table,
+#all-clubs-table {
   border: 1px solid $green;
   border-collapse: collapse;
 }
 
-.all-users-table-header {
+.all-users-table-header,
+.all-clubs-table-header {
   background-color: $green;
   color: white;
   padding: 5px;
 }
 
-.all-users-data {
+.all-users-data,
+.all-clubs-data {
   font-weight: bold;
 }
 
-.user-username {
+.user-username,
+.club-clubname {
   padding-left: 5px;
   padding-right: 20px;
 }
@@ -186,16 +194,29 @@ tr {
   padding-right: 5px;
 }
 
+.club-location {
+  text-align: right;
+  width: 200px;
+  padding-right: 5px;
+}
+
 .user-hci abbr {
   text-align: center;
   padding-right: 5px;
   text-decoration: none;
 }
 
-.user-best {
+.user-best,
+.club-number-of-tees {
   text-align: right;
   padding-left: 5px;
   padding-right: 5px;
+}
+
+.club-number-of-tees {
+  font-weight: normal;
+  word-wrap: normal;
+  width: 250px;
 }
 
 .user-played {
@@ -214,7 +235,7 @@ tr {
 }
 
 .user-profile-handicap-container {
-
+  margin-top: 15px;
 }
 
 .user-profile-h3 {
