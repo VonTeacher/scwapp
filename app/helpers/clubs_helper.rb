@@ -4,7 +4,8 @@ module ClubsHelper
     tee_array = []
     club.tees.each { |t| tee_array << t.color }
     tee_array.sort_by do |e|
-      ['blue', 'white', 'gold', 'green', 'red'].index(e)
+      sorted = ['blue', 'white', 'gold', 'green', 'red'].index(e)
+      sorted.join(', ')
     end
   end
 
