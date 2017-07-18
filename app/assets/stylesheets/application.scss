@@ -134,6 +134,19 @@ body {
 }
 
 /* ALL USERS / CLUBS PAGE */
+.pagetop-link-button {
+  margin-top: 20px;
+}
+
+.large-link {
+  border-radius: 5px;
+  padding: 10px;
+  background-color: $green;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
 tr {
   line-height: 2rem;
   transition: all 0.0s;

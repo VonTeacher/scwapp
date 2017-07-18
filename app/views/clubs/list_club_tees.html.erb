@@ -10,7 +10,7 @@
     <th>Bogey Rating</th>
     <th>Gender</th>
   </tr>
-  <% club.tees.each do |tee| %>
+  <% list_tees_in_color_order(club).each do |tee| %>
   <tr>
     <td><%= tee.color %></td>
     <td><%= tee.usga_course_rating_18 %></td>

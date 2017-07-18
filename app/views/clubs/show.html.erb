@@ -1,5 +1,9 @@
 <% provide(:title, @club.name) %>
 
+<p class="pagetop-link-button">
+  <%= link_to '<< Back to Club Listing', clubs_path, class: 'large-link' %>
+</p>
+
 <h2><%= @club.name %> (Tees added: <%= @club.tees.count %>)</h2>
 <p>
   <%= @club.city %>, <%= @club.state %>
