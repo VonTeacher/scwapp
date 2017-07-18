@@ -18,7 +18,8 @@ Rails.application.routes.draw do
   get    '/logout', to: 'sessions#destroy'
 
   # ROUNDS
-  get  '/add_round', to: 'rounds#new'
-  post '/add_round', to: 'rounds#create'
+  get   '/add_round', to: 'rounds#new'
+  post  '/add_round', to: 'rounds#create'
+  resources :rounds, only: [:edit, :update, :destroy]
 
 end

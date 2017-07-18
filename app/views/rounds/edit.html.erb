@@ -1,0 +1,21 @@
+<% provide(:title, 'Edit Round') %>
+
+<h2>Edit Round</h2>
+
+Editing round for <%= @user.username %>:
+<p>Club: <%= @round.club.name %></p>
+<p>Date: <%= @round.date_played.strftime('%b %d, %Y') %></p>
+<p>Tee: <%= @round.tee.color %></p>
+
+<%= form_for @round, url: round_path do |f| %>
+  <p id="score_reminder">
+    REMINDER: The score you are submitting is your <span>Adjusted Gross Score</span>.<br />Please be sure to adjust maximum strokes before submitting.
+  </p>
+  <p>
+    <%= f.label :adjusted_score, 'Adjusted Gross Score' %>
+    <%= f.number_field :adjusted_score %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

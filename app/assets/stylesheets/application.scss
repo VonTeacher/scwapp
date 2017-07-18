@@ -14,9 +14,14 @@
  *= require_self
  */
 $lightblue-80: #cbe6ff;
+
 $green: #1A4D19;
 $lightgreen-50: #99CC98;
 $lightgreen-70: #cdffcc;
+
+$orange: #ffc83d;
+// $lightred: #f79c8a;
+$lightred: rgba(240, 58, 23, 0.5);
 
 @mixin box_sizing {
   -webkit-box-sizing: border-box;
@@ -36,6 +41,10 @@ body {
   // text-align: center;
   // margin-left: auto;
   // margin-right: auto;
+}
+
+.inline-block {
+  display: inline-block;
 }
 
 /* NAV & HEADER */
@@ -147,7 +156,7 @@ body {
   text-decoration: none;
 }
 
-tr {
+tr, li {
   line-height: 2rem;
   transition: all 0.0s;
   cursor: default;
@@ -178,25 +187,29 @@ tr {
 }
 
 #all-users-table,
-#all-clubs-table {
+#all-clubs-table,
+#tee-table {
   border: 1px solid $green;
   border-collapse: collapse;
 }
 
 .all-users-table-header,
-.all-clubs-table-header {
+.all-clubs-table-header,
+.tees-table-header th {
   background-color: $green;
   color: white;
   padding: 5px;
 }
 
 .all-users-data,
-.all-clubs-data {
+.all-clubs-data,
+.tees-table-data td {
   font-weight: bold;
 }
 
 .user-username,
-.club-clubname {
+.club-clubname,
+.tee-colorname {
   padding-left: 5px;
   padding-right: 20px;
 }
@@ -204,6 +217,11 @@ tr {
 .user-hci {
   text-align: right;
   width: 50px;
+  padding-right: 5px;
+}
+
+.tee-data {
+  text-align: right;
   padding-right: 5px;
 }
 
@@ -304,8 +322,9 @@ tr {
 }
 
 .user-profile-all-container ul li {
-  line-height: 20px;
-  width: 500px;
+  position: relative;
+  line-height: 30px;
+  width: 600px;
   a, a:active, a:hover, a:visited {
     color: black;
   }
@@ -322,6 +341,26 @@ tr {
   width: 100px;
 }
 
+.no-deco a {
+  text-decoration: none;
+}
+
+.edit-function a {
+  margin-left: 15px;
+  padding: 2px 10px;
+  border: 1px solid black;
+  border-radius: 15%;
+  background-color: $orange;
+}
+
+.delete-function a {
+  margin-left: 15px;
+  padding: 2px 10px;
+  border: 1px solid black;
+  border-radius: 15%;
+  background-color: $lightred;
+}
+
 .clear {
   clear: both;
 }
@@ -336,6 +375,32 @@ tr {
   border-radius: 0 0 10px 10px;
   padding: 10px;
   background-color: $lightgreen-50;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.alert-update {
+  text-align: center;
+  margin-top: -1px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid darkorange;
+  border-radius: 0 0 10px 10px;
+  padding: 10px;
+  background-color: $orange;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.alert-purged {
+  text-align: center;
+  margin-top: -1px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid red;
+  border-radius: 0 0 10px 10px;
+  padding: 10px;
+  background-color: $lightred;
   font-weight: bold;
   letter-spacing: 1px;
 }
