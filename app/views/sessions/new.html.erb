@@ -1,6 +1,9 @@
 <% provide(:title, 'Log In') %>
 
 <h2>Log In</h2>
+<p>
+  <span class="large-link">NOTE: Username and Password are case-sensitive!</span> 
+</p>
 <%= form_for(:session, url: login_path) do |f| %>
   <p>
     <%= f.label :username %>

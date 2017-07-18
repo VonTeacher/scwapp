@@ -19,10 +19,6 @@ class User < ApplicationRecord
     end
   end
 
-  def to_param
-    [id, username].join('-')
-  end
-
   has_secure_password
 
   validates :password, presence: true, length: { minimum: 6 }
