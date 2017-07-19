@@ -1,8 +1,8 @@
-<% provide(:title, 'New Tee') %>
+<% provide(:title, 'Edit Tee') %>
 
-<h2>Add a New Tee</h2>
+<h2>Edit Tee on <%= @club.name %></h2>
 
-<%= form_for @tee, url: club_tees_path(@club) do |f| %>
+<%= form_for @tee, url: club_tee_path do |f| %>
   <p>
     <%= f.label :color %>
     <%= f.text_field :color %>
@@ -21,6 +21,6 @@
     <%= f.text_field :gender, value: 'M' %>
   </p>
   <p>
-    <%= f.submit "Add Tee to #{@club.name}" %>
+    <%= f.submit "Confirm Tee Edit for #{@club.name}" %>
   </p>
 <% end %>

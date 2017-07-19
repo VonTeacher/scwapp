@@ -31,4 +31,23 @@ RSpec.describe TeesController, type: :controller do
     end
   end
 
+  describe 'tees#edit action' do
+    it 'should successfully load a tee edit page' do
+      club = FactoryGirl.create(:club)
+      tee  = FactoryGirl.create(:tee)
+      get :edit, params: { id: tee.id, club_id: club.id }
+      expect(response).to have_http_status(:success)
+    end
+  end
+
+  describe 'tees#update action' do
+    it 'should accept a valid tee edit' do
+      club = FactoryGirl.create(:club)
+      tee  = FactoryGirl.create(:tee)
+      patch :update, params: { id: tee.id, club_id: club.id, tee: { color: 'Edit' } }
+      tee.reload
+      expect(tee.color).to eq('Edit')
+    end
+  end
+
 end

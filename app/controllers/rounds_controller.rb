@@ -28,7 +28,7 @@ class RoundsController < ApplicationController
     @user = current_user
     @round = @user.rounds.find_by_id(params[:id])
     if @round.update_attributes(round_params)
-      flash[:update] = 'Round Updated!'
+      flash[:update] = "Round for #{@round.date_played.strftime('%b %d, %Y')} Updated!"
       redirect_to @user
     else
       render 'edit', status: :unprocessable_entity
@@ -38,6 +38,9 @@ class RoundsController < ApplicationController
   def destroy
     @user = current_user
     @round = @user.rounds.find_by_id(params[:id])
+    if @round.nil?
+      redirecto_to @user, status: :not_found
+    end
     @round.destroy
     flash[:purged] = 'Round Deleted!'
     redirect_to @user

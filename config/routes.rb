@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # CLUBS
   resources :clubs do
-    resources :tees, only: [:new, :create]
+    resources :tees, only: [:new, :create, :edit, :update, :destroy]
   end
 
   # USERS

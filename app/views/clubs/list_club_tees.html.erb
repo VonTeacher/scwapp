@@ -12,7 +12,11 @@
   </tr>
   <% list_tees_in_color_order(club).each do |tee| %>
   <tr class="tees-table-data">
-    <td class="tee-colorname"><%= tee.color %></td>
+    <td class="tee-colorname"><%= tee.color %>
+      <%= link_to 'EDIT', edit_club_tee_path(club, tee) %>
+      <!-- tees#delete action placeholder -->
+      <!-- Not currently added due to issues relating to orphaned rounds after tee deletion -->
+    </td>
     <td class="tee-data"><%= tee.usga_course_rating_18 %></td>
     <td class="tee-data"><%= tee.slope_rating_18 %></td>
     <!-- <td class="tee-data"><%= tee.front_9_rating %></td>

@@ -34,7 +34,7 @@ class ClubsController < ApplicationController
   def update
     @club = Club.find_by_id(params[:id])
     if @club.update_attributes(club_params)
-      flash[:update] = 'Club Updated!'
+      flash[:update] = "#{@club.name} Updated!"
       redirect_to club_path(@club)
     else
       render 'edit', status: :unprocessable_entity
