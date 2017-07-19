@@ -17,5 +17,7 @@
   </p>
   <p>
     <%= f.submit "Add Club" %>
+    <%= f.button "Reset Form", type: :reset %>
+    <button><%= link_to "Cancel", clubs_path, id: 'cancel-button' %></button>
   </p>
 <% end %>

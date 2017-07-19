@@ -1,6 +1,6 @@
 class Club < ApplicationRecord
 
-  has_many :tees
+  has_many :tees, dependent: :destroy
   has_many :rounds, through: :tees
 
   validates :name, presence: true, allow_blank: false

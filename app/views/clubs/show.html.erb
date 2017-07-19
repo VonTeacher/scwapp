@@ -15,6 +15,7 @@
     <%= render template: 'clubs/list_club_tees', locals: { club: @club } %>
   <% end %>
 </div>
-<p>
-  <%= link_to 'Add a Tee', new_club_tee_path(@club), class: 'large-link' %>
-</p>
+
+<span class="club-add-tee-button">
+  <%= link_to 'Add a Tee', new_club_tee_path(@club) %>
+</span>

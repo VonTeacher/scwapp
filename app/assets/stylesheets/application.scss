@@ -123,7 +123,8 @@ body {
 }
 
 .user-add-round-button,
-.club-add-round-button {
+.club-add-round-button,
+.club-add-tee-button {
   border-radius: 5px;
   padding: 10px;
   background-color: $green;
@@ -140,6 +141,12 @@ body {
   span {
     font-weight: bold;
   }
+}
+
+#cancel-button {
+  cursor: default;
+  text-decoration: none;
+  color: black;
 }
 
 /* ALL USERS / CLUBS PAGE */
@@ -191,6 +198,7 @@ tr, li {
 #tee-table {
   border: 1px solid $green;
   border-collapse: collapse;
+  margin-bottom: 20px;
 }
 
 .all-users-table-header,
