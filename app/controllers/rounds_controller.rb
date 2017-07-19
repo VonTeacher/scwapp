@@ -17,10 +17,14 @@ class RoundsController < ApplicationController
   end
 
   def edit
-    @user = current_user
-    @round = @user.rounds.find_by_id(params[:id])
-    if @round.nil?
-      redirect_to @user
+    if current_user.nil?
+      redirect_to users_url
+    else
+      @user = current_user
+      @round = @user.rounds.find_by_id(params[:id])
+      if @round.nil? || current_user.nil? || @round.user != current_user
+        redirect_to clubs_path
+      end
     end
   end
 
