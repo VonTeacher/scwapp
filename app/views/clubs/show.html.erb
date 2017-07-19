@@ -4,7 +4,9 @@
   <%= link_to '<< Back to Club Listing', clubs_path, class: 'large-link' %>
 </p>
 
-<h2><%= @club.name %> - <%= @club.city %>, <%= @club.state %></h2>
+<h2 class="inline-block"><%= @club.name %> - <%= @club.city %>, <%= @club.state %></h2>
+<span class="inline-block edit-function"><%= link_to '&#9997;'.html_safe, edit_club_path(@club) %></span>
+<span class="inline-block delete-function"><%= link_to '&#10060;'.html_safe, club_path(@club), method: :delete, data: { confirm: 'Are you sure?' } %></span>
 
 <div>
   <% if @club.tees.blank? %>

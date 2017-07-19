@@ -24,6 +24,27 @@ class ClubsController < ApplicationController
     end
   end
 
+  def edit
+    @club = Club.find_by_id(params[:id])
+  end
+
+  def update
+    @club = Club.find_by_id(params[:id])
+    if @club.update_attributes(club_params)
+      flash[:update] = 'Club Updated!'
+      redirect_to club_path(@club)
+    else
+      render 'edit', status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @club = Club.find_by_id(params[:id])
+    @club.destroy
+    flash[:purged] = 'Club Deleted!'
+    redirect_to clubs_path
+  end
+
   private
 
   def club_params

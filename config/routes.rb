@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   root 'users#index'
 
+  # CLUBS
   resources :clubs do
     resources :tees, only: [:new, :create]
   end
