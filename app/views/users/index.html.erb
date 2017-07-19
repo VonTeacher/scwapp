@@ -14,8 +14,8 @@
     <tr>
       <th class="all-users-table-header">Username</th>
       <th class="all-users-table-header">HCI</th>
-      <!-- <th class="all-users-table-header">Best Round</th> -->
       <th class="all-users-table-header">Rounds<br />Played</th>
+      <th class="all-users-table-header">Best Round</th>
     </tr>
 
     <% @users.each do |user| %>
@@ -29,6 +29,13 @@
           <% end %>
         </td>
         <td class="all-users-data user-played"><%= user.rounds.count %></td>
+        <td class="all=users-data user-best-round">
+          <% if user.rounds.nil? %>
+            No rounds played
+          <% else %>
+            <%= user.best_round %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
 

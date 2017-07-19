@@ -251,8 +251,13 @@ tr, li {
 }
 
 .user-played {
-  text-align: right;
+  text-align: center;
   padding-right: 5px;
+}
+
+.user-best-round {
+  text-align: right;
+  padding-right: 10px;
 }
 
 /* USER PROFILE PAGE */

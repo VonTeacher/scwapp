@@ -59,10 +59,11 @@ class User < ApplicationRecord
   end
 
   def best_round
-    if !self.rounds.nil?
-      self.rounds.order('adjusted_score').first
-    else
+    if self.rounds.empty?
       return 'No rounds played yet'
+    else
+      best = self.rounds.order('adjusted_score').first
+      result = best.adjusted_score.to_s + ' on ' + best.club.name + ' (' + best.tee.color + ')'
     end
   end
 
