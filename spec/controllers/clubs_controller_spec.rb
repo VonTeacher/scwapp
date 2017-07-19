@@ -75,4 +75,39 @@ RSpec.describe ClubsController, type: :controller do
     end
   end
 
+  describe 'clubs#edit action' do
+    it 'should load the page for an existing club' do
+      club = FactoryGirl.create(:club)
+      edit_club_path(club)
+      expect(response).to have_http_status(:success)
+    end
+
+    it 'should return to the club listing page if a club is not found' do
+      get :edit, params: { id: 'noclub' }
+      expect(response).to have_http_status(:not_found)
+    end
+  end
+
+  describe 'clubs#update action' do
+    it 'should update successfully with valid input' do
+      club = FactoryGirl.create(:club)
+      club.update_attributes(name: 'Augusta Country Club EDIT')
+      expect(club.name).to eq('Augusta Country Club Edit')
+      expect(response).to have_http_status(:success)
+    end
+
+    it 'should reload the edit page with if changes are invalid' do
+
+    end
+  end
+
+  describe 'clubs#destroy action' do
+    it 'should delete a club that exists' do
+      club = FactoryGirl.create(:club)
+      club_count = Club.count
+      club.destroy
+      expect(Club.count).to eq(club_count - 1)
+    end
+  end
+
 end

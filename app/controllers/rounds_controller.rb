@@ -19,6 +19,9 @@ class RoundsController < ApplicationController
   def edit
     @user = current_user
     @round = @user.rounds.find_by_id(params[:id])
+    if @round.nil?
+      redirect_to @user
+    end
   end
 
   def update

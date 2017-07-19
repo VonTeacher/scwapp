@@ -20,12 +20,15 @@ class ClubsController < ApplicationController
   def show
     @club = Club.find_by_id(params[:id])
     if @club.blank?
-      render plain: 'Club Not Found', status: :not_found
+      redirect_to clubs_path, status: :not_found
     end
   end
 
   def edit
     @club = Club.find_by_id(params[:id])
+    if @club.nil?
+      redirect_to clubs_path, status: :not_found
+    end
   end
 
   def update
@@ -40,6 +43,9 @@ class ClubsController < ApplicationController
 
   def destroy
     @club = Club.find_by_id(params[:id])
+    if @club.nil?
+      redirect_to clubs_path, status: :not_found
+    end
     @club.destroy
     flash[:purged] = 'Club Deleted!'
     redirect_to clubs_path
