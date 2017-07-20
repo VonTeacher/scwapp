@@ -22,7 +22,7 @@ class RoundsController < ApplicationController
     else
       @user = current_user
       @round = @user.rounds.find_by_id(params[:id])
-      if @round.nil? || current_user.nil? || @round.user != current_user
+      if @round.nil? || @round.user != current_user
         redirect_to clubs_path
       end
     end
