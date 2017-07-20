@@ -13,7 +13,8 @@ New round for <%= @user.username %>
   </p>
   <p>
     <%= f.label :date_played %>
-    <%= f.date_field :date_played %>
+    <div id="date-picker"></div>
+    <%= f.hidden_field :date_played %>
   </p>
   <p id="score_reminder">
     REMINDER: The score you are submitting is your <span>Adjusted Gross Score</span>.<br />Please be sure to adjust maximum strokes before submitting.

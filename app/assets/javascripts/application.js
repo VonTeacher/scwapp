@@ -12,7 +12,18 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui/widgets/datepicker
 //= require jquery.turbolinks
 //= require turbolinks
 //= require turbolinks-compatibility
 //= require_tree .
+
+$( function() {
+  $( "#date-picker" ).datepicker({
+    dateFormat: "yy-mm-dd",
+    maxDate: 0,
+    onSelect: function() {
+      $( "#round_date_played" ).val(this.value);
+    }
+  })
+});
