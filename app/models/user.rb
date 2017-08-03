@@ -88,7 +88,8 @@ class User < ApplicationRecord
     }
 
     if self.rounds.count >= 5
-      recent_eligible_rounds = self.rounds.order('date_played').last(20).collect { |r| r.round_handicap_differential }.sort.first(differentials[self.rounds.count])
+      latest_played_rounds = self.rounds.order('date_played').last(20)
+      recent_eligible_rounds = latest_played_rounds.collect { |r| r.round_handicap_differential }.sort.first(differentials[latest_played_rounds.count])
       recent_eligible_rounds.each_with_index do |b, i|
         recent_eligible_rounds[i] = b.round(1)
       end
