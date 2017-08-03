@@ -93,7 +93,7 @@ class User < ApplicationRecord
       recent_eligible_rounds.each_with_index do |b, i|
         recent_eligible_rounds[i] = b.round(1)
       end
-      ((( recent_eligible_rounds.sum / differentials[self.rounds.count] ) * 0.96 ) * 10.0).floor / 10.0
+      ((( recent_eligible_rounds.sum / differentials[latest_played_rounds.count] ) * 0.96 ) * 10.0).floor / 10.0
     else
       '***'
     end
