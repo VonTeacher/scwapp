@@ -10,6 +10,7 @@
         <%= link_to 'Club&nbsp;Listing'.html_safe, clubs_path, class: 'site-nav-item' %> |
         <%= link_to 'All&nbsp;Users'.html_safe, users_path, class: 'site-nav-item' %> |
         <%= link_to 'My&nbsp;Profile'.html_safe, current_user, class: 'site-nav-item' %> |
+        <%= link_to 'My&nbsp;Settings'.html_safe, edit_user_path(current_user), class: 'site-nav-item' %> |
         <%= link_to 'Log&nbsp;Out'.html_safe, logout_path, class: 'site-nav-item' %>
       <% else %>
         <%= link_to 'Log&nbsp;In'.html_safe, login_path, class: 'site-nav-item' %>

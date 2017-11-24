@@ -1,27 +1,8 @@
 <% provide(:title, 'User Registration') %>
+<% provide(:button_text, 'Create my account') %>
 
 <h2>New User Signup</h2>
 
 <%= render partial: 'shared/error_messages', locals: { user: @user } %>
 
-<%= form_for(@user, url: signup_path) do |f| %>
-  <p>
-    <%= f.label :username %>
-    <%= f.text_field :username %>
-  </p>
-  <p>
-    <%= f.label :email %>
-    <%= f.email_field :email %>
-  </p>
-  <p>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </p>
-  <p>
-    <%= f.label :password_confirmation, 'Confirm Password' %>
-    <%= f.password_field :password_confirmation %>
-  </p>
-  <p>
-    <%= f.submit 'Register' %>
-  </p>
-<% end %>
+<%= render 'form' %>

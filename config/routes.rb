@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get  '/users', to: 'users#index'
   get  '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
-  resources :users, only: [:show]
+  resources :users, only: [:show, :edit, :update]
 
   # SESSIONS
   get    '/login',  to: 'sessions#new'
