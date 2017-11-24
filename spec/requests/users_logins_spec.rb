@@ -5,7 +5,7 @@ RSpec.describe "UsersLogins", type: :request do
 
   describe 'flash test' do
 
-    it 'should display flash for one page view' do
+    xit 'should display flash for one page view' do
       get login_path
       # assert_template has been extracted to a gem
       # expect(response).to render_template('sessions/new')
@@ -22,7 +22,7 @@ RSpec.describe "UsersLogins", type: :request do
 
   describe 'log_out test' do
 
-    it 'should log_in w/ valid info, then log_out' do
+    xit 'should log_in w/ valid info, then log_out' do
       user = FactoryGirl.create(:user)
       get login_path
       post login_path, params: { session: { username: user.username, password: user.password } }

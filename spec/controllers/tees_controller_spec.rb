@@ -2,6 +2,9 @@ require 'rails_helper'
 
 RSpec.describe TeesController, type: :controller do
 
+  let(:club) { FactoryGirl.create(:club) }
+  let(:tee)  { FactoryGirl.create(:tee, club_id: club.id ) }
+
   describe 'tees#new action' do
     it 'should successfully show the new tee page' do
       club = FactoryGirl.create(:club)
@@ -12,8 +15,6 @@ RSpec.describe TeesController, type: :controller do
 
   describe 'tees#create action' do
     it 'should successfully create a new tee' do
-      club = FactoryGirl.create(:club)
-      tee = FactoryGirl.create(:tee)
       post :create, params: { tee: tee.attributes, club_id: club.id }
       expect(response).to redirect_to club_url(club)
 
@@ -33,8 +34,6 @@ RSpec.describe TeesController, type: :controller do
 
   describe 'tees#edit action' do
     it 'should successfully load a tee edit page' do
-      club = FactoryGirl.create(:club)
-      tee  = FactoryGirl.create(:tee)
       get :edit, params: { id: tee.id, club_id: club.id }
       expect(response).to have_http_status(:success)
     end
@@ -42,11 +41,9 @@ RSpec.describe TeesController, type: :controller do
 
   describe 'tees#update action' do
     it 'should accept a valid tee edit' do
-      club = FactoryGirl.create(:club)
-      tee  = FactoryGirl.create(:tee)
-      patch :update, params: { id: tee.id, club_id: club.id, tee: { color: 'Edit' } }
+      patch :update, params: { club_id: club.id, id: tee.id, tee: { color: 'Chartreuse' } }
       tee.reload
-      expect(tee.color).to eq('Edit')
+      expect(tee.color).to eq('Chartreuse')
     end
   end
 

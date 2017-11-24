@@ -172,10 +172,11 @@ body {
   margin-bottom: 20px;
 }
 
-.flex-outer li label {
+.flex-outer li label,
+.text-without-width {
   padding: 8px;
   letter-spacing: .09em;
-  font-weight: 400px;
+  font-weight: 400;
   text-transform: uppercase;
 }
 
@@ -191,6 +192,18 @@ body {
 .flex-outer li input,
 .flex-outer li button {
   padding: 15px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.flex-outer li input[type="submit"],
+.flex-outer li button {
+  margin-left: auto;
+  margin-right: auto;
+  transition: all 0.4s;
+  &:hover {
+    border-radius: 10px;
+  }
 }
 
 
@@ -456,6 +469,19 @@ tr li {
 }
 
 .alert-purged {
+  text-align: center;
+  margin-top: -1px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid red;
+  border-radius: 0 0 10px 10px;
+  padding: 10px;
+  background-color: $lightred;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.alert-alert {
   text-align: center;
   margin-top: -1px;
   margin-left: auto;

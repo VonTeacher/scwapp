@@ -1,4 +1,5 @@
 class ClubsController < ApplicationController
+  before_action :require_registered_user, only: [:index, :new, :create, :show, :edit, :update]
 
   def index
     @clubs = Club.search(params[:search])
@@ -11,7 +12,8 @@ class ClubsController < ApplicationController
   def create
     @club = Club.create(club_params)
     if @club.valid?
-      redirect_to root_url
+      flash[:success] = 'Club successfully added!'
+      redirect_to @club
     else
       render :new, status: :unprocessable_entity
     end
@@ -57,4 +59,10 @@ class ClubsController < ApplicationController
     params.require(:club).permit(:name, :city, :state)
   end
 
+  def require_registered_user
+    unless logged_in?
+      flash[:alert] = 'You must be signed in to view this page'
+      redirect_to login_url
+    end
+  end
 end

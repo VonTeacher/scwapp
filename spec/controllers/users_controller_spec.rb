@@ -1,9 +1,13 @@
 require 'rails_helper'
+require 'support/test_helper'
 
 RSpec.describe UsersController, type: :controller do
 
+  let(:user) { FactoryGirl.create(:user) }
+
   describe 'users#index' do
     it 'should successfully show all users' do
+      log_in_as(user)
       get :index
       expect(response).to have_http_status(:success)
     end
@@ -59,12 +63,13 @@ RSpec.describe UsersController, type: :controller do
 
   describe 'users#show action' do
     it 'should show the page for an existing user' do
-      user = FactoryGirl.create(:user)
+      log_in_as(user)
       get :show, params: { id: user.id }
       expect(response).to have_http_status(:success)
     end
 
     it 'should redirect and alert if a user does not exist' do
+      log_in_as(user)
       get :show, params: { id: 'noid' }
       expect(response).to redirect_to root_url
     end

@@ -1,9 +1,13 @@
 require 'rails_helper'
+require 'support/test_helper'
 
 RSpec.describe ClubsController, type: :controller do
 
+  let(:user) { FactoryGirl.create(:user) }
+
   describe 'clubs#index action' do
     it 'should succesfully show the page' do
+      log_in_as(user)
       get :index
       expect(response).to have_http_status(:success)
     end
@@ -11,18 +15,27 @@ RSpec.describe ClubsController, type: :controller do
 
   describe 'clubs#new action' do
     it 'should succesfully show the page to add a new club' do
+      log_in_as(user)
       get :new
       expect(response).to have_http_status(:success)
     end
   end
 
   describe 'clubs#create action' do
-    it 'should succesfully create a new club in the database' do
-      club = FactoryGirl.create(:club)
-      post :create, params: { club: club.attributes }
-      expect(response).to redirect_to root_url
 
+    before do
+      log_in_as(user)
+    end
+
+    it 'should succesfully create a new club in the database' do
+      club = Club.new
+      post :create, params: { club: { name: 'Augusta Country Club',
+        city: 'Augusta',
+        state: 'GA' } }
       club = Club.last
+      club.reload
+
+      expect(response).to redirect_to club
       expect(club.name).to eq 'Augusta Country Club'
       expect(club.city).to eq 'Augusta'
       expect(club.state).to eq 'GA'
@@ -63,6 +76,10 @@ RSpec.describe ClubsController, type: :controller do
   end
 
   describe 'clubs#show action' do
+    before do
+      log_in_as(user)
+    end
+
     it 'should successfully show a clubs detail page' do
       club = FactoryGirl.create(:club)
       get :show, params: { id: club.id }
@@ -76,6 +93,10 @@ RSpec.describe ClubsController, type: :controller do
   end
 
   describe 'clubs#edit action' do
+    before do
+      log_in_as(user)
+    end
+
     it 'should load the page for an existing club' do
       club = FactoryGirl.create(:club)
       edit_club_path(club)

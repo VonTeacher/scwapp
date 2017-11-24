@@ -18,4 +18,5 @@ end
 
 RSpec.configure do |c|
   c.include TestHelpers
+  c.include TestHelpers, type: :controller
 end

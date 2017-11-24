@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   include UsersHelper
 
+  before_action :require_registered_user, only: [:index, :show, :edit, :update]
+
   def index
     @users = User.user_search(params[:user_search])
   end
@@ -49,4 +51,10 @@ class UsersController < ApplicationController
       params.require(:user).permit(:username, :email, :password, :password_confirmation)
     end
 
+    def require_registered_user
+      unless logged_in?
+        flash[:alert] = 'You must be signed in to view this page'
+        redirect_to login_url
+      end
+    end
 end
