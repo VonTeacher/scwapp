@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   # USERS
   get  '/users', to: 'users#index'
   get  '/signup', to: 'users#new'
-  post '/signup', to: 'users#create'
+  post '/users', to: 'users#create'
   resources :users, only: [:show, :edit, :update]
 
   # SESSIONS
