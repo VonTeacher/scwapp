@@ -1,23 +1,28 @@
 <% provide(:title, @user.username) %>
 
-<p class="pagetop-link-button">
-  <%= link_to '<< Back to All Users', users_path, class: 'large-link' %>
-</p>
-
-<div class="user-profile-details">
-  <%= user_greeting(@user) %>
+<div>
+  <div class="pagetop-link-button">
+    <%= link_to '<< Back to All Users', users_path, class: 'large-link' %>
+  </div>
+  <div class="pagetop-link-button float-top-margin">
+    <%= user_add_new_round(@user) %>
+  </div>
 </div>
 
-<div class="user-profile-handicap-container">
-  <%= user_profile_handicap_index(@user) %>
-</div>
-
-<div class="user-profile-last-container">
-  <%= user_profile_last_round(@user) %>
-</div>
-
-<div class="user-profile-all-container">
-  <%= user_profile_latest_n_rounds(@user) %>
-</div>
-
+<div class="center-parent">
+  <div class="user-profile-details">
+    <%= user_greeting(@user) %>
+  </div>
+  <div class="user-profile-handicap-container">
+    <%= user_profile_handicap_index(@user) %>
+  </div>
+  <table id="rounds-table">
+    <tr>
+    <!-- class="user-profile-last-container" -->
+      <th><%= user_profile_last_round(@user) %></th>
+    </tr>
+  </table>
+  <div class="user-profile-all-container">
+    <%= user_profile_latest_n_rounds(@user) %>
+  </div>
 </div>

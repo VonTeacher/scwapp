@@ -8,7 +8,7 @@ RSpec.describe "UsersSignups", type: :request do
     it 'should deny #create' do
       get signup_path
       expect {
-        post '/signup', params: { user: { username: 'testuser', email: 'testuser@test.com', password: 'foo', password_confirmation: 'bar' } }
+        post '/users', params: { user: { username: 'testuser', email: 'testuser@test.com', password: 'foo', password_confirmation: 'bar' } }
       }.to_not change(User, :count)
       assert_select 'div#error-explain'
       assert_select 'div.field_with_errors'
@@ -20,7 +20,7 @@ RSpec.describe "UsersSignups", type: :request do
     it 'should allow #create' do
       get signup_path
       expect{
-        post '/signup', params: { user: { username: 'testuser', email: 'testuset@test.com', password: 'testpass', password_confirmation: 'testpass' } }
+        post '/users', params: { user: { username: 'testuser', email: 'testuset@test.com', password: 'testpass', password_confirmation: 'testpass' } }
       }.to change(User, :count).by 1
       follow_redirect!
       assert_select 'div.alert-success'

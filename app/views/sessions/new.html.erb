@@ -1,9 +1,11 @@
 <% provide(:title, 'Log In') %>
 
-<h2>Log In</h2>
-<p>
-  <span class="large-link">NOTE: Username and Password are case-sensitive!</span>
-</p>
+<div class="center-parent">
+  <h2 class="center">Welcome to SCW Golf App!</h2>
+  <p class="large-link center">
+    <span>NOTE: Username and Password are case-sensitive!</span>
+  </p>
+</div>
 
 <%= form_for(:session, url: login_path) do |f| %>
 <ul class="flex-outer">
@@ -18,14 +20,17 @@
   <li>
     <%= f.submit 'LOG IN' %>
   </li>
-
   <%= f.label :remember_me do %>
-  <%= f.check_box :remember_me %>
-  <span class="text-without-width">Remember me on this device</span>
+  <%= f.check_box :remember_me, class: 'regular-checkbox' %>
+  <span class="text-without-width">
+    <i class="fas fa-save"></i> Remember me on this device
+  </span>
   <% end %>
-</ul>
+  </ul>
 <% end %>
 
-<p>
-  New user? <%= link_to "Register Now", signup_path %></p>
-</p>
+<div class="center-parent">
+  <p class="new-user center">
+    New user? <%= link_to "Register Now", signup_path %>
+  </p>
+</div>

@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] = 'Welcome to SCWAPP!'
+      flash[:notice] = 'Welcome to SCWAPP!'
       redirect_to @user
     else
       render :new, status: :unprocessable_entity
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      flash[:success] = 'Profile successfully updated!'
+      flash[:notice] = 'Profile successfully updated!'
       redirect_to @user
     else
       flash[:alert] = "Save was unsuccessful"
@@ -53,7 +53,7 @@ class UsersController < ApplicationController
 
     def require_registered_user
       unless logged_in?
-        flash[:alert] = 'You must be signed in to view this page'
+        # flash[:alert] = 'Please sign in.'
         redirect_to login_url
       end
     end
