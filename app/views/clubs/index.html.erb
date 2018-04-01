@@ -1,35 +1,40 @@
 <% provide(:title, 'Clubs') %>
 
-<div id="all-clubs-header-container">
-  <h2 id="all-clubs-header">Clubs</h2>
-  <div id="all-clubs-search">
-    <%= form_tag clubs_path, method: :get, enforce_utf8: false do %>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag 'Search Golf Clubs', name: nil %>
-    <% end %>
+<div class="center block">
+  <div id="all-clubs-header-container">
+    <!--<h2 id="all-clubs-header">Clubs</h2>-->
+    <div id="all-clubs-search">
+      <%= form_tag clubs_path, method: :get, enforce_utf8: false do %>
+      <%= text_field_tag :search, params[:search], id: 'club-search-input', class: 'club-search-field', placeholder: 'Enter club name...' %>
+      <%= submit_tag 'Search Golf Clubs', name: nil %>
+      <% end %>
+    </div>
   </div>
-</div>
-
-<span class="club-add-round-button">
-  <%= link_to 'Add a Course / Club', new_club_path %>
-</span>
-
-<div id="all-clubs">
-  <table id="all-clubs-table">
-    <tr>
-      <th class="all-clubs-table-header">Club Name</th>
-      <th class="all-clubs-table-header">City, State</th>
-      <th class="all-clubs-table-header">Tees</th>
-    </tr>
-
-    <% @clubs.each do |club| %>
+  <% if @clubs.empty? %>
+    <div id="all-clubs">
+      No results.
+    </div>
+  <% else %>
+  <div id="all-clubs">
+    <table id="all-clubs-table">
       <tr>
-        <td class="all-clubs-data club-clubname"><%= link_to club.name, club %></td>
-        <td class="all-clubs-data club-location"><%= club.city %>, <%= club.state.upcase %></td>
-        <td class="all-clubs-data club-number-of-tees"><%= join_tees_with_commas(club) %>
-        </td>
+        <th class="all-clubs-table-header">Club Name</th>
+        <th class="all-clubs-table-header">City, State</th>
+        <th class="all-clubs-table-header">Tees</th>
       </tr>
-    <% end %>
 
-  </table>
+      <% @clubs.each do |club| %>
+        <tr>
+          <td class="all-clubs-data club-clubname"><%= link_to club.name, club %></td>
+          <td class="all-clubs-data club-location"><%= club.city %>, <%= club.state.upcase %></td>
+          <td class="all-clubs-data club-number-of-tees"><%= join_tees_with_commas(club) %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <% end %>
+  <span class="club-add-round-button">
+    <%= link_to '+ Add a Course / Club', new_club_path %>
+  </span>
 </div>

@@ -14,6 +14,7 @@
  *= require_self
  *= require jquery-ui/datepicker
  */
+$lightblue-form: #e5f2ff;
 $lightblue-80: #cbe6ff;
 
 $green: #1A4D19;
@@ -40,6 +41,10 @@ $lightred: rgba(240, 58, 23, 0.5);
 .center {
   margin-left: auto;
   margin-right: auto;
+}
+.block {
+  width: 600px;
+  display: block;
 }
 
 /* BODY */
@@ -195,6 +200,14 @@ body {
   }
 }
 
+.club-search-field,
+.user-search-field {
+  font-size: 1.2em;
+  &:focus {
+    background-color: $lightblue-form;
+  }
+}
+
 /* FORM FLEX ELEMENTS */
 
 .flex-outer {
@@ -231,8 +244,14 @@ body {
   text-transform: none;
 }
 
-.flex-outer > li > input[type=text] {
+.flex-outer > li > input[type=text],
+.flex-outer > li > input[type=number],
+.flex-outer > li > input[type=email],
+.flex-outer > li > input[type=password] {
   font-size: 1.1em;
+  &:focus {
+    background-color: $lightblue-form;
+  }
 }
 
 .flex-outer > li > label {
@@ -251,8 +270,7 @@ body {
   letter-spacing: 1px;
 }
 
-.flex-outer li input[type="submit"],
-.flex-outer li button {
+.flex-outer li input[type="submit"] {
   margin-left: auto;
   margin-right: auto;
   transition: all 0.4s;
@@ -261,10 +279,24 @@ body {
   border-radius: 10px;
   border: 1px solid $green;
   &:hover, &:active, &:focus {
-    background-color: white;
+    cursor: pointer;
+    background-color: $lightblue-form;
     color: $green;
     border: 1px solid $green;
+    a {
+      color: $green;
+    }
   }
+}
+
+.flex-outer li button a {
+  color: white;
+  text-decoration: none;
+}
+
+#tee_usga_course_rating_18,
+#tee_slope_rating_18 {
+  font-size: 1em;
 }
 
 /* ALL USERS / CLUBS PAGE */
@@ -295,6 +327,10 @@ body {
   text-decoration: none;
 }
 
+.small-link-text {
+  font-size: .7em;
+}
+
 tr,
 tr li {
   line-height: 2rem;
@@ -316,10 +352,11 @@ tr li {
 #all-users-header, #all-users-search,
 #all-clubs-header, #all-clubs-search {
   display: inline-block;
+  margin-top: 20px;
 }
 
 #all-users {
-
+  margin-top: 20px;
 }
 
 .new-user {
@@ -328,6 +365,7 @@ tr li {
 
 #all-clubs {
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 #all-users-table,
@@ -336,6 +374,7 @@ tr li {
   border: 1px solid $green;
   border-collapse: collapse;
   margin-bottom: 20px;
+  width: 100%;
 }
 
 .all-users-table-header,
@@ -343,6 +382,8 @@ tr li {
 .tees-table-header th {
   background-color: $green;
   color: white;
+  font-size: 1.2em;
+  letter-spacing: 1px;
   padding: 5px;
 }
 

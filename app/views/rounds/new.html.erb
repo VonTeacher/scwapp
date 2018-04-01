@@ -1,29 +1,46 @@
+<script>
+  $('document').ready(function() {
+    $('#tee-select').hide();
+    $('#round_club_id').change(function() {
+      if ($('#tee-select').css('display') === 'none') {
+        $('#tee-select').show(500);
+      } else if ($('#tee-select').css('display') === 'block') {
+        $('#tee-select').hide();
+      }
+    });
+  });
+</script>
+
 <% provide(:title, 'New Round') %>
 
-<h2>Add a New Round</h2>
+<div class="center block">
+  <h2>Add a new round, <%= @user.username %>:</h2>
 
-New round for <%= @user.username %>
-
-<%= form_for @round, url: add_round_path do |f| %>
-  <p>
-    <%= f.collection_select :club_id, Club.order(:name), :id, :name, include_blank: true %>
-  </p>
-  <p>
-    <%= f.grouped_collection_select :tee_id, Club.order(:name), :tees, :name, :id, :color, include_blank: true %>
-  </p>
-  <p>
-    <%= f.label :date_played %>
-    <div id="date-picker"></div>
-    <%= f.hidden_field :date_played %>
-  </p>
-  <p id="score_reminder">
-    REMINDER: The score you are submitting is your <span>Adjusted Gross Score</span>.<br />Please be sure to adjust maximum strokes before submitting.
-  </p>
-  <p>
-    <%= f.label :adjusted_score, 'Adjusted Gross Score' %>
-    <%= f.number_field :adjusted_score %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+  <%= form_for @round, url: add_round_path do |f| %>
+    <p>
+      <%= f.label 'Club: ' %>
+      <%= f.collection_select :club_id, Club.order(:name), :id, :name, include_blank: 'Select club...' %>
+    </p>
+    <div id="tee-select">
+      <p>
+        <%= f.label 'Tee: ' %>
+        <%= f.grouped_collection_select :tee_id, Club.order(:name), :tees, :name, :id, :color_with_gender, include_blank: 'Select tee...' %>
+      </p>
+      <p>
+        <%= f.label :date_played %>
+        <div id="date-picker"></div>
+        <%= f.hidden_field :date_played %>
+      </p>
+      <p id="score_reminder">
+        REMINDER: The score you are submitting is your <span>Adjusted Gross Score</span>.<br />Please be sure to adjust maximum strokes before submitting.
+      </p>
+      <p>
+        <%= f.label :adjusted_score, 'Adjusted Gross Score' %>
+        <%= f.number_field :adjusted_score %>
+      </p>
+      <p>
+        <%= f.submit %>
+      </p>
+    </div>
+  <% end %>
+</div>

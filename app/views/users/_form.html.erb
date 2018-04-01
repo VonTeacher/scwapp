@@ -16,11 +16,12 @@
     <%= f.password_field :password, class: 'form-control' %>
   </li>
   <li>
-    <%= f.label :password_confirmation, "Confirmation" %>
+    <%= f.label :password_confirmation, 'Confirmation' %>
     <%= f.password_field :password_confirmation, class: 'form-control' %>
   </li>
   <li>
-    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+    <%= f.submit yield(:button_text), class: 'btn btn-primary' %>
+    <%= link_to 'Cancel', @user %>
   </li>
 </ul>
 <% end %>

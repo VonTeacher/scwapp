@@ -11,4 +11,12 @@ class Tee < ApplicationRecord
   validates :gender, presence: true, length: { is: 1 }, inclusion: { in: %w(F M) }
   validates :club_id, presence: true
 
+  def color_with_gender
+    "#{color.capitalize} (#{gender_to_word(gender)})"
+  end
+
+  def gender_to_word(gender)
+    gender.upcase == 'M' ? "Men's" : "Ladies"
+  end
+
 end

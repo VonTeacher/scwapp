@@ -12,8 +12,8 @@
   </tr>
   <% list_tees_in_color_order(club).each do |tee| %>
   <tr class="tees-table-data">
-    <td class="tee-colorname"><%= tee.color %>
-      <%= link_to 'EDIT', edit_club_tee_path(club, tee) %>
+    <td class="tee-colorname"><%= tee.color.capitalize %>
+      <%= link_to '(Edit)', edit_club_tee_path(club, tee), class: 'small-link-text' %>
       <!-- tees#delete action placeholder -->
       <!-- Not currently added due to issues relating to orphaned rounds after tee deletion -->
     </td>

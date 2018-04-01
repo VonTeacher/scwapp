@@ -14,7 +14,7 @@ module UsersHelper
   def user_add_new_round user
     if user == current_user
       content_tag(:span, class: 'user-add-round-button') do
-        link_to 'Add a New Round', add_round_path(user)
+        link_to '+ Add a New Round', add_round_path(user)
       end
     end
   end

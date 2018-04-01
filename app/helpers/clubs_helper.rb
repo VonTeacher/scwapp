@@ -5,7 +5,7 @@ module ClubsHelper
     color_order = ['Blue', 'White', 'Gold', 'Red', 'Green', 'Gold Ladies', 'Green Ladies', 'Red Ladies']
     club.tees.each { |t| tee_array << t.color }
     sorted = tee_array.sort_by do |e|
-      color_order.index(e)
+      color_order.index(e.downcase)
     end
     sorted.join(', ')
   end
@@ -16,8 +16,9 @@ module ClubsHelper
     tee_array = []
     color_order = ['Blue', 'White', 'Gold', 'Red', 'Green', 'Gold Ladies', 'Green Ladies', 'Red Ladies']
     club.tees.each { |t| tee_array << t }
+    p tee_array
     sorted = tee_array.sort_by do |e|
-      color_order.index(e[:color])
+      color_order.index(e[:color].downcase)
     end
     sorted
   end

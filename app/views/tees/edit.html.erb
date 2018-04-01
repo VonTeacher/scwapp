@@ -1,26 +1,30 @@
 <% provide(:title, 'Edit Tee') %>
 
-<h2>Edit Tee on <%= @club.name %></h2>
+<div class="center block">
+  <h2>Edit Tee on <%= @club.name %></h2>
 
-<%= form_for @tee, url: club_tee_path do |f| %>
-  <p>
-    <%= f.label :color %>
-    <%= f.text_field :color %>
-  </p>
-  <p>
-    <%= f.label :usga_course_rating_18 %>
-    <%= f.number_field :usga_course_rating_18, step: 0.1 %>
-  </p>
-  <p>
-    <%= f.label :slope_rating_18 %>
-    <%= f.number_field :slope_rating_18 %>
-  </p>
-  <!-- Removed unnecessary fields 2017-07-19 -->
-  <p>
-    <%= f.label :gender %>
-    <%= f.text_field :gender, value: 'M' %>
-  </p>
-  <p>
-    <%= f.submit "Confirm Tee Edit for #{@club.name}" %>
-  </p>
-<% end %>
+  <%= form_for @tee, url: club_tee_path do |f| %>
+    <ul class="flex-outer">
+      <li>
+        <%= f.label :color %>
+        <%= f.text_field :color %>
+      </li>
+      <li>
+        <%= f.label :usga_course_rating_18 %>
+        <%= f.number_field :usga_course_rating_18, step: 0.1 %>
+      </li>
+      <li>
+        <%= f.label :slope_rating_18 %>
+        <%= f.number_field :slope_rating_18 %>
+      </li>
+      <!-- Removed unnecessary fields 2017-07-19 -->
+      <li>
+        <%= f.label :gender %>
+        <%= f.text_field :gender, value: 'M' %>
+      </li>
+      <li>
+        <%= f.submit "Confirm Tee Edit for #{@club.name}" %>
+      </li>
+    </ul>
+  <% end %>
+</div>

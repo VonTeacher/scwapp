@@ -1,21 +1,27 @@
 <% provide(:title, @club.name) %>
 
-<p class="pagetop-link-button">
-  <%= link_to '<< Back to Club Listing', clubs_path, class: 'large-link' %>
-</p>
+<% if flash[:notice] %>
+  <div class="alert-notice"><%= flash[:notice] %></div>
+<% end %>
 
-<h2 class="inline-block"><%= @club.name %> - <%= @club.city %>, <%= @club.state %></h2>
-<span class="inline-block edit-function"><%= link_to '&#9997;'.html_safe, edit_club_path(@club) %></span>
-<!-- club#delete action removed due to potential issue with orphaned rounds -->
+<div class="center block">
+  <p class="pagetop-link-button">
+    <%= link_to '<< Back to Club Listing', clubs_path, class: 'large-link' %>
+  </p>
 
-<div class="club-tee-listing">
-  <% if @club.tees.blank? %>
-    No tees have been added to this club.
-  <% else %>
-    <%= render template: 'clubs/list_club_tees', locals: { club: @club } %>
-  <% end %>
+  <h2 class="inline-block"><%= @club.name %> - <%= @club.city %>, <%= @club.state %></h2>
+  <span class="inline-block edit-function"><%= link_to '&#9997;'.html_safe, edit_club_path(@club) %></span>
+  <!-- club#delete action removed due to potential issue with orphaned rounds -->
+
+  <div class="club-tee-listing">
+    <% if @club.tees.blank? %>
+      No tees have been added to this club.
+    <% else %>
+      <%= render template: 'clubs/list_club_tees', locals: { club: @club } %>
+    <% end %>
+  </div>
+
+  <span class="club-add-tee-button">
+    <%= link_to 'Add a Tee', new_club_tee_path(@club) %>
+  </span>
 </div>
-
-<span class="club-add-tee-button">
-  <%= link_to 'Add a Tee', new_club_tee_path(@club) %>
-</span>

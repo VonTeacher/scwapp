@@ -23,7 +23,7 @@ RSpec.describe "UsersSignups", type: :request do
         post '/users', params: { user: { username: 'testuser', email: 'testuset@test.com', password: 'testpass', password_confirmation: 'testpass' } }
       }.to change(User, :count).by 1
       follow_redirect!
-      assert_select 'div.alert-success'
+      assert_select 'div.alert-notice'
       assert test_is_logged_in?
     end
   end
